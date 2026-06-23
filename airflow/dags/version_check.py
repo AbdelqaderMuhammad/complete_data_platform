@@ -6,11 +6,20 @@ Trigger manually after any image upgrade to verify the environment.
 from datetime import datetime
 from airflow.sdk import dag, task
 
+
+default_args = {
+    "owner": "data_engineering",
+    "depends_on_past": False,
+    "retries": 0,
+}
+
 @dag(
     dag_id="version_check",
+    default_args=default_args,
     schedule=None,
     start_date=datetime(2024, 1, 1),
     catchup=False,
+    max_active_runs=1,
     tags=["smoke-test"],
 )
 def version_check():
