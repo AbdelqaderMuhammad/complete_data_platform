@@ -1,7 +1,7 @@
 
 
 include:
-  - path: compose/airflow.yml
+  - path: airflow.yml
 
 services:
 
@@ -90,7 +90,7 @@ services:
     ports:
       - "8888:8888"
     environment:
-      JUPYTER_TOKEN: iceberg
+      JUPYTER_TOKEN: admin
       PYICEBERG_CATALOG__DEFAULT__TYPE: rest
       PYICEBERG_CATALOG__DEFAULT__URI: http://iceberg-rest:8181
       PYICEBERG_CATALOG__DEFAULT__WAREHOUSE: s3://warehouse/
@@ -100,7 +100,7 @@ services:
       AWS_SECRET_ACCESS_KEY: minioadmin
       AWS_REGION: us-east-1
     volumes:
-      - ./notebooks:/home/jovyan/work
+      - ../notebooks:/home/jovyan/work
     depends_on:
       iceberg-rest:
         condition: service_healthy

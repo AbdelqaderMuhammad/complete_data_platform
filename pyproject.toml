@@ -10,7 +10,10 @@ dependencies = [
     "jupyter>=1.1.1",
     "pandas>=3.0.3",
     "pyiceberg[pyarrow]>=0.11.1",
-    "pynessie>=0.67.0",
     "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = [
     "s3fs>=2026.4.0",
 ]

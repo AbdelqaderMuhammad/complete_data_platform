@@ -7,3 +7,8 @@ notebooks/.ipynb_*
 airflow/config
 airflow/logs
 airflow/plugins
+airflow/logs/
+warehouse/
+__pycache__/
+*.pyc
+.venv/
