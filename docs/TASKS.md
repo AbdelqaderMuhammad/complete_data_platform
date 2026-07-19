@@ -14,10 +14,11 @@
 - [x] Incremental reads script
 
 ## Phase 3 — Ingestion pipeline
-- [ ] Decide raw source scope (which NYC Taxi months/years, file format)
 - [ ] Land raw files in MinIO landing zone
-- [ ] Define partition strategy (likely pickup date)
-- [ ] Build Airflow DAG: raw → Iceberg table write
+- [ ] Write pipeline/load_raw.py's load_partition() first, test it standalone against one local .parquet file — confirm the overwrite() partition filter actually behaves idempotently before wiring Airflow around it
+- [ ] Wrap it in the two-task DAG above
+- [ ] Run it twice in a row manually, confirm row count in the Iceberg table doesn't change on the second run
+Then decide on landing/ file lifecycle — delete after successful load, or keep as an audit trail? (Keeping them is usually worth the storage cost for a portfolio project — it's your replay source if the Iceberg table ever needs a full rebuild.)
 - [ ] Make the load idempotent (rerun-safe on partial failure)
 - [ ] Test: rerun a partial/failed load and confirm no duplicate/corrupt data
 
