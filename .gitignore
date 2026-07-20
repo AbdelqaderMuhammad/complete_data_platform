@@ -12,3 +12,5 @@ warehouse/
 __pycache__/
 *.pyc
 .venv/
+dbt/logs
+dbt/target

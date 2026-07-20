@@ -1,0 +1,6 @@
+models:
+  - name: stg_yellow_taxi_trips
+    columns:
+      - name: tpep_pickup_datetime
+        tests:
+          - not_null

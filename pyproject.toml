@@ -15,5 +15,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "dbt-duckdb>=1.10.1",
     "s3fs>=2026.4.0",
 ]

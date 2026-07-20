@@ -14,13 +14,13 @@
 - [x] Incremental reads script
 
 ## Phase 3 — Ingestion pipeline
-- [ ] Land raw files in MinIO landing zone
-- [ ] Write pipeline/load_raw.py's load_partition() first, test it standalone against one local .parquet file — confirm the overwrite() partition filter actually behaves idempotently before wiring Airflow around it
-- [ ] Wrap it in the two-task DAG above
-- [ ] Run it twice in a row manually, confirm row count in the Iceberg table doesn't change on the second run
+- [x] Land raw files in MinIO landing zone
+- [x] Write pipeline/load_raw.py's load_partition() first, test it standalone against one local .parquet file — confirm the overwrite() partition filter actually behaves idempotently before wiring Airflow around it
+- [x] Wrap it in the two-task DAG above
+- [x] Run it twice in a row manually, confirm row count in the Iceberg table doesn't change on the second run
 Then decide on landing/ file lifecycle — delete after successful load, or keep as an audit trail? (Keeping them is usually worth the storage cost for a portfolio project — it's your replay source if the Iceberg table ever needs a full rebuild.)
-- [ ] Make the load idempotent (rerun-safe on partial failure)
-- [ ] Test: rerun a partial/failed load and confirm no duplicate/corrupt data
+- [x] Make the load idempotent (rerun-safe on partial failure)
+- [x] Test: rerun a partial/failed load and confirm no duplicate/corrupt data
 
 ## Phase 4 — Transformation layer (dbt)
 - [ ] Configure dbt Iceberg adapter against the REST catalog

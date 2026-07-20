@@ -1,0 +1,6 @@
+sources:
+  - name: raw
+    database: raw_catalog
+    schema: open_lakehouse
+    tables:
+      - name: yellow_taxi_trips

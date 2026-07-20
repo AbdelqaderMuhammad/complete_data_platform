@@ -1,0 +1,10 @@
+name: nyc_taxi_lakehouse
+version: '1.0.0'
+profile: nyc_taxi_lakehouse
+model-paths: ["models"]
+
+models:
+  nyc_taxi_lakehouse:
+    staging:
+      +database: raw_catalog
+      +schema: staging
