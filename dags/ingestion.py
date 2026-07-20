@@ -4,11 +4,12 @@ from airflow.decorators import dag, task
 
 from pipeline.landing import download_nyc_taxi_to_landing
 from pipeline.raw_layer import initialize_iceberg_table_schema, register_parquet_to_iceberg
+from airflow.sdk import Asset
 
 NAMESPACE = "open_lakehouse"
 TABLE_NAME = "yellow_taxi_trips"
 LANDING_BUCKET = "landing"
-
+raw_table_asset = Asset("iceberg://open_lakehouse/yellow_taxi_trips")
 
 @dag(
     dag_id="nyc_taxi_raw_ingestion",
@@ -35,7 +36,7 @@ def nyc_taxi_raw_ingestion():
         )
         return landed
 
-    @task(max_active_tis_per_dag=1)
+    @task(max_active_tis_per_dag=1, outlets=[raw_table_asset])
     def register(landed: dict) -> None:
         register_parquet_to_iceberg(
             namespace_name=NAMESPACE,
