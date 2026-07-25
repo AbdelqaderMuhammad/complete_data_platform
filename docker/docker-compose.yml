@@ -80,7 +80,7 @@ services:
 
   # ─────────────────────────────────────────────
   # Jupyter — Python dev environment with PyIceberg
-  # URL: http://localhost:8888  (token: iceberg)
+  # URL: http://localhost:8888  (token: admin)
   # ─────────────────────────────────────────────
   jupyter:
     build:

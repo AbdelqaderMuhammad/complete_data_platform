@@ -1,0 +1,15 @@
+models:
+  - name: fct_trips
+    description: "One row per trip. Grain: trip. Core fact table for demand/revenue and tipping analysis."
+    columns:
+      - name: tpep_pickup_datetime
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Calendar spine, one row per date."
+    columns:
+      - name: date_key
+        tests:
+          - not_null
+          - unique

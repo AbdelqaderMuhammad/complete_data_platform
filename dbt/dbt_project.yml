@@ -8,3 +8,10 @@ models:
     staging:
       +database: raw_catalog
       +schema: staging
+    intermediate:
+      +database: raw_catalog
+      +schema: intermediate
+    marts:
+      core:
+        +database: raw_catalog
+        +schema: marts_core

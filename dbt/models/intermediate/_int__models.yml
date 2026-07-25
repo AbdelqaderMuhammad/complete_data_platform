@@ -1,0 +1,13 @@
+models:
+  - name: int_trips_enriched
+    description: "Yellow taxi trips with derived measures (tip %, duration, fare per mile), filtered to remove outliers and data errors."
+    columns:
+      - name: tpep_pickup_datetime
+        tests:
+          - not_null
+      - name: tip_pct
+        tests:
+          - not_null
+      - name: fare_per_mile
+        tests:
+          - not_null
